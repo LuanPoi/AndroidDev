@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoginEGaleria</string>
+    <string name="login_page">Login Page</string>
+    <string name="password">Password:</string>
+    <string name="login">Login:</string>
+    <string name="e_mail">e-mail</string>
+    <string name="_6_8_characters">(6 - 8 characters)</string>
+    <string name="confirm">confirm</string>
+    <string name="register_page">Register Page</string>
+    <string name="register">Register</string>
+    <string name="sign_in">Sign in</string>
+</resources>
