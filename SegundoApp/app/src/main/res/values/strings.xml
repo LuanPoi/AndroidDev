@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SegundoApp</string>
+    <string name="primeira_tela">Primeira Tela</string>
+    <string name="ir_para_segunda_tela">Ir para segunda tela</string>
+    <string name="change_image">Change Image</string>
+    <string name="visivel">visivel</string>
+    <string name="imagem_principal">Imagem principal</string>
+</resources>
