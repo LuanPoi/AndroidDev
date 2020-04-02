@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewLoginLabel" />
 
         <EditText
-            android:id="@+id/editTextPasswordInput6"
+            android:id="@+id/editTextPasswordInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -81,7 +81,7 @@
             app:layout_constraintTop_toTopOf="@+id/textViewPasswordLabel" />
 
         <TextView
-            android:id="@+id/textViewPasswordLabel7"
+            android:id="@+id/textViewConfirmPasswordLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -94,17 +94,17 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewPasswordLabel" />
 
         <EditText
-            android:id="@+id/editTextPasswordInput7"
+            android:id="@+id/editTextConfirmPasswordInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/_6_8_characters"
             android:inputType="numberPassword"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewPasswordLabel7"
-            app:layout_constraintEnd_toEndOf="@+id/editTextPasswordInput6"
-            app:layout_constraintStart_toStartOf="@+id/editTextPasswordInput6"
-            app:layout_constraintTop_toTopOf="@+id/textViewPasswordLabel7" />
+            app:layout_constraintBottom_toBottomOf="@+id/textViewConfirmPasswordLabel"
+            app:layout_constraintEnd_toEndOf="@+id/editTextPasswordInput"
+            app:layout_constraintStart_toStartOf="@+id/editTextPasswordInput"
+            app:layout_constraintTop_toTopOf="@+id/textViewConfirmPasswordLabel" />
 
         <TextView
             android:id="@+id/textViewPasswordLabel8"
@@ -114,18 +114,19 @@
             android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/textViewPasswordLabel7"
-            app:layout_constraintStart_toStartOf="@+id/textViewPasswordLabel7" />
+            app:layout_constraintBottom_toTopOf="@+id/textViewConfirmPasswordLabel"
+            app:layout_constraintStart_toStartOf="@+id/textViewConfirmPasswordLabel" />
 
         <Button
-            android:id="@+id/buttonSignIn"
+            android:id="@+id/buttonRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
+            android:onClick="buttonRegisterClicked"
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPasswordInput7" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextConfirmPasswordInput" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

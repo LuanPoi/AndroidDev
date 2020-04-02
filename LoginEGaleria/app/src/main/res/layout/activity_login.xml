@@ -74,9 +74,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonSignIn"
+        android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buttonSignInClicked"
         android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="@+id/space"
         app:layout_constraintEnd_toStartOf="@+id/space"
@@ -86,6 +87,7 @@
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="buttonRegisterClicked"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="@+id/space"
         app:layout_constraintStart_toEndOf="@+id/space"
