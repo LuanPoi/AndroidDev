@@ -9,4 +9,9 @@
     <string name="register_page">Register Page</string>
     <string name="register">Register</string>
     <string name="sign_in">Sign in</string>
+    <string name="gallery_page">Gallery Page</string>
+    <string name="visible">Visible</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="todo">TODO</string>
 </resources>

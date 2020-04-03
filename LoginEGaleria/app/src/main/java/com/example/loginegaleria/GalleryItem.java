@@ -1,12 +1,13 @@
 package com.example.loginegaleria;
 
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 public class GalleryItem {
     private final String title;
-    private final ImageView imageResource;
+    private final Drawable imageResource;
 
-    public GalleryItem(String title, ImageView imageResource){
+    public GalleryItem(String title, Drawable imageResource){
         this.title = title;
         this.imageResource = imageResource;
     }
@@ -15,7 +16,7 @@ public class GalleryItem {
         return title;
     }
 
-    public ImageView getImageResource() {
+    public Drawable getImageResource() {
         return imageResource;
     }
 }
