@@ -29,7 +29,7 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
     public void onBindViewHolder(@NonNull CityAdapter.CityHolder holder, int position) {
         City city = cities.get(position);
         holder.textViewCityName.setText(city.getName());
-        holder.textViewCityPopulation.setText(city.getPopulation());
+        holder.textViewCityPopulation.setText(Integer.toString(city.getPopulation()));
     }
 
     @Override
