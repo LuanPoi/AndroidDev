@@ -1,0 +1,2 @@
+rootProject.name='MovieManagerRecycleview'
+include ':app'

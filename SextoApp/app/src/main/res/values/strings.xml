@@ -2,4 +2,5 @@
     <string name="app_name">SextoApp</string>
     <string name="_1000">1000</string>
     <string name="cidade">Cidade</string>
+    <string name="city_dialog_text">Insira os dados da cidade</string>
 </resources>

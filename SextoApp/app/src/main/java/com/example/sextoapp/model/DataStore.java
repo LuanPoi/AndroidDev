@@ -3,6 +3,9 @@ package com.example.sextoapp.model;
 import android.content.Context;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DataStore {
@@ -54,4 +57,27 @@ public class DataStore {
     public int getCityListSize(){
         return cities.size();
     }
+
+    public void sortCitiesByName(){
+        List<City> sortedCities = this.cities;
+
+        Collections.sort(sortedCities, new Comparator<City>() {
+            @Override
+            public int compare(City city2, City city1)
+            {
+                return  city1.getName().compareTo(city2.getName());
+            }
+        });
+
+        this.cities = sortedCities;
+    }
+
+    public void sortCitiesByPopulation(){
+        List<City> sortedCities = this.cities;
+
+        sortedCities.sort(Comparator.comparing(City::getPopulation));
+
+        this.cities = sortedCities;
+    }
+
 }
