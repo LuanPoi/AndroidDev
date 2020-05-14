@@ -50,11 +50,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product product = products.get(position);
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
+        final Product product = products.get(position);
         holder.textViewItemName.setText(product.name);
         holder.ratingBarMovieInput.setRating(product.rating);
         holder.imageViewMovie.setImageURI(product.image);
 
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                products.remove(product);
+                notifyDataSetChanged();
+                return true;
+            }
+        });
     }
+
+
 }

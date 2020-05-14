@@ -25,7 +25,7 @@ import com.example.sextoapp.model.DataStore;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements CityDialogFragment.CityDialogListener {
+public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerViewCities;
     Button buttonAdd;
     CityAdapter adapter;
@@ -47,12 +47,6 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
         recyclerViewCities.setLayoutManager(manager);
 
         buttonAdd = findViewById(R.id.buttonAdd);
-//        buttonAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
     }
 
     @Override
@@ -65,43 +59,16 @@ public class MainActivity extends AppCompatActivity implements CityDialogFragmen
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.menuItemSortByName){
-            DialogFragment dialogFragment = new CityDialogFragment();
-            dialogFragment.show(dialogFragment.getFragmentManager(), "cityDialog");
+            // TODO: Fazer o sort das cidades por nome
             return true;
         }else if(id == R.id.menuItemSortByPopulation){
-
+            // TODO: Fazer o sort das cidades pelo tamanho da populacao
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    // The dialog fragment receives a reference to this Activity through the
-    // Fragment.onAttach() callback, which it uses to call the following methods
-    // defined by the NoticeDialogFragment.NoticeDialogListener interface
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        // User touched the dialog's positive button
-        Random random = new Random();
-        int population = random.nextInt(10000000);
-        StringBuilder stringBuilder = new StringBuilder();
-        int stringSize = random.nextInt(5)+5;
-        for (int i = 0; i<stringSize; ++i){
-            char c = (char) (random.nextInt(96)+32);
-            stringBuilder.append(c);
-        }
-        City city = new City(stringBuilder.toString(), population);
-        DataStore.getInstance().addCity(city);
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        // User touched the dialog's negative button
-        return;
-    }
-
-
     public void addCityButtonPressed(View v){
-        DialogFragment dialog = new CityDialogFragment();
-        dialog.show(getSupportFragmentManager(), "AddCityDialogFragmentTag");
+        // TODO: Chamar a activity de inserção ou alteraçaõ de dados
     }
 }
