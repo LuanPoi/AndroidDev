@@ -37,7 +37,7 @@ public class DataStore {
     }
     public void addCity(City city){
         if(database.createCityInDatabase(city) > 0){
-            cities.add(city);
+            cities.add(0, city);
         }else{
             Toast.makeText(context, "addCity Problem", Toast.LENGTH_LONG).show();
         }
@@ -48,10 +48,10 @@ public class DataStore {
             cities.set(position, city);
         }
     }
-    public void removeCity(int position){
-        int count = database.removeCityFromDatabase(cities.get(position));
+    public void removeCity(City city){
+        int count = database.removeCityFromDatabase(city);
         if(count > 0){
-            cities.remove(position);
+            cities.remove(city);
         }
     }
     public int getCityListSize(){

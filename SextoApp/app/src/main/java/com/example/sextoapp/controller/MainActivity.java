@@ -15,10 +15,12 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -75,7 +77,29 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addCityButtonPressed(View v){
-        // TODO: Chamar a activity de inserção ou alteraçaõ de dados
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (101) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    adapter.notifyItemInserted(0);
+                }
+                break;
+            }
+            case (102) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    // TODO: colocar a posição do item alterado - adapter.notifyItemChanged();
+                }
+                break;
+            }
+        }
     }
+
+    public void addCityButtonPressed(View v){
+        // TODO: Chamar a activity de inserção ou alteração de dados
+        startActivityForResult(new Intent(MainActivity.this, dataInputActivity.class).putExtra("request_code", 101), 101);
+    }
+
+
 }

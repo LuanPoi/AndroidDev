@@ -15,7 +15,7 @@ import com.example.sextoapp.model.DataStore;
 import java.util.List;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
-    private List<City> cities = DataStore.getInstance().getCities();
+    private DataStore dataStore = DataStore.getInstance();
 
     @NonNull
     @Override
@@ -27,14 +27,23 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CityAdapter.CityHolder holder, int position) {
-        City city = cities.get(position);
+        City city = dataStore.getCities().get(position);
         holder.textViewCityName.setText(city.getName());
         holder.textViewCityPopulation.setText(Integer.toString(city.getPopulation()));
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                dataStore.removeCity(city);
+                notifyDataSetChanged();
+                return true;
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return cities.size();
+        return DataStore.getInstance().getCityListSize();
     }
 
     public class CityHolder extends RecyclerView.ViewHolder{
