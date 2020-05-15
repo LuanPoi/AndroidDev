@@ -23,9 +23,6 @@ public class DataStore {
     private List<City> cities;
     private Context context;
 
-    public List<City> getCities() {
-        return cities;
-    }
     public void setContext(Context context) {
         this.context = context;
         database = new CityDatabase(context);
@@ -35,6 +32,9 @@ public class DataStore {
 //        addCity(new City("Rio de Janeiro", 8000000));
     }
 
+    public List<City> getCities() {
+        return cities;
+    }
     public void addCity(City city){
         if(database.createCityInDatabase(city) > 0){
             cities.add(city);

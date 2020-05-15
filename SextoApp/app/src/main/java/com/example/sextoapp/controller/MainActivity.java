@@ -1,5 +1,12 @@
 package com.example.sextoapp.controller;
 
+
+/*
+        * Criar um app que tenha uma lista de itens com pelo menos 2 campos, uma string e um numero (sugestão: cidades como feito em sala) .
+
+        * O usuario com este App poderá: criar itens, deletar itens, editar itens e ordenar itens (baseado na ordem alfabetica do campo string, ou por ordem numero baseado no int)
+*/
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
