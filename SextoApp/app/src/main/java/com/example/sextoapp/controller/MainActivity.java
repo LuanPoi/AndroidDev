@@ -87,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             }
-            case (102) : {
+            /*case (102) : {
                 if (resultCode == Activity.RESULT_OK) {
                     // TODO: colocar a posição do item alterado - adapter.notifyItemChanged();
                 }
                 break;
-            }
+            }*/
         }
     }
 

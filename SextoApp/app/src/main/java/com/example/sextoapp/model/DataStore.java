@@ -35,6 +35,10 @@ public class DataStore {
     public List<City> getCities() {
         return cities;
     }
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
     public void addCity(City city){
         if(database.createCityInDatabase(city) > 0){
             cities.add(0, city);
