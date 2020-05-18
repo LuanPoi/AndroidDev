@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerViewCities = findViewById(R.id.recyclerViewCities);
         DataStore.getInstance().setContext(this);
-        adapter = new CityAdapter();
+        adapter = new CityAdapter(MainActivity.this);
         recyclerViewCities.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -68,10 +68,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.menuItemSortByName){
-            // TODO: Fazer o sort das cidades por nome
+            DataStore.getInstance().sortCitiesByName();
+            adapter.notifyDataSetChanged();
             return true;
         }else if(id == R.id.menuItemSortByPopulation){
-            // TODO: Fazer o sort das cidades pelo tamanho da populacao
+            DataStore.getInstance().sortCitiesByPopulation();
+            adapter.notifyDataSetChanged();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -80,24 +82,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
-            case (101) : {
-                if (resultCode == Activity.RESULT_OK) {
-                    adapter.notifyItemInserted(0);
-                }
-                break;
+        if(requestCode == 101){
+            if (resultCode == Activity.RESULT_OK) {
+                adapter.notifyItemInserted(0);
             }
-            /*case (102) : {
-                if (resultCode == Activity.RESULT_OK) {
-                    // TODO: colocar a posição do item alterado - adapter.notifyItemChanged();
-                }
-                break;
-            }*/
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     public void addCityButtonPressed(View v){
-        // TODO: Chamar a activity de inserção ou alteração de dados
         startActivityForResult(new Intent(MainActivity.this, dataInputActivity.class).putExtra("request_code", 101), 101);
     }
 

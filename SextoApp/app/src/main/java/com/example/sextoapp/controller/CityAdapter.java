@@ -22,6 +22,12 @@ import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
     private DataStore dataStore = DataStore.getInstance();
+    private Context context;
+
+    public CityAdapter(Context context) {
+        this.context = context;
+    }
+
 
     @NonNull
     @Override
@@ -48,10 +54,13 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // ! Concertar parte
-                // ! startActivityForResult(new Intent(context, dataInputActivity.class).putExtra("request_code", 102), 102);
-                City newCity = null;
-                dataStore.editCity(newCity, position);
+                Intent tempIntent =  new Intent(context, dataInputActivity.class);
+                tempIntent.putExtra("request_code", 102);
+                tempIntent.putExtra("city_id", city.getId());
+                tempIntent.putExtra("city_name", city.getName());
+                tempIntent.putExtra("city_population", city.getPopulation());
+                tempIntent.putExtra("city_array_position", position);
+                context.startActivity(tempIntent);
 
                 notifyDataSetChanged();
             }
@@ -73,6 +82,4 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityHolder> {
             textViewCityPopulation = itemView.findViewById(R.id.textViewCityPopulation);
         }
     }
-
-
 }

@@ -23,6 +23,8 @@ public class dataInputActivity extends AppCompatActivity {
     DataStore dataStore;
     EditText editTextCityNameInput;
     EditText editTextCityPopulationInput;
+    int position = -1;
+    long id = -1;
     int requestCode = -1;
 
     @Override
@@ -36,6 +38,13 @@ public class dataInputActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             requestCode = (int) extras.get("request_code");
+
+            if(requestCode == 102){
+                id = Long.parseLong(extras.get("city_id").toString());
+                editTextCityNameInput.setText(extras.getString("city_name"));
+                editTextCityPopulationInput.setText(extras.get("city_population").toString());
+                position = extras.getInt("city_array_position");
+            }
         }
     }
 
@@ -47,7 +56,12 @@ public class dataInputActivity extends AppCompatActivity {
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
             }else if (requestCode == 102){
-
+                City tempCity = new City(editTextCityNameInput.getText().toString(), Integer.parseInt(editTextCityPopulationInput.getText().toString()));
+                tempCity.setId(id);
+                dataStore.editCity(tempCity, position);
+                Intent resultIntent = new Intent();
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
             }
         }
     }

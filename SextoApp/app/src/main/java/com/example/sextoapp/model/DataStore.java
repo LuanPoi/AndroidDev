@@ -10,6 +10,8 @@ import java.util.List;
 
 public class DataStore {
     private static DataStore instance = null;
+    private boolean nameSortingSwitch = false;
+    private boolean populationSortingSwitch = false;
 
     private DataStore(){}
     public static DataStore getInstance(){
@@ -40,7 +42,9 @@ public class DataStore {
     }
 
     public void addCity(City city){
-        if(database.createCityInDatabase(city) > 0){
+        long returnResult = database.createCityInDatabase(city);
+        if(returnResult > 0){
+            city.setId(returnResult);
             cities.add(0, city);
         }else{
             Toast.makeText(context, "addCity Problem", Toast.LENGTH_LONG).show();
@@ -50,6 +54,7 @@ public class DataStore {
         int count = database.updateCityFromDatabase(city);
         if(count > 0){
             cities.set(position, city);
+            Toast.makeText(context, "City updated", Toast.LENGTH_SHORT);
         }
     }
     public void removeCity(City city){
@@ -63,13 +68,18 @@ public class DataStore {
     }
 
     public void sortCitiesByName(){
+        nameSortingSwitch = !nameSortingSwitch;
         List<City> sortedCities = this.cities;
 
         Collections.sort(sortedCities, new Comparator<City>() {
             @Override
-            public int compare(City city2, City city1)
+            public int compare(City city1, City city2)
             {
-                return  city1.getName().compareTo(city2.getName());
+                if(nameSortingSwitch){
+                    return  city1.getName().compareTo(city2.getName());
+                }else{
+                    return  city2.getName().compareTo(city1.getName());
+                }
             }
         });
 
@@ -77,11 +87,21 @@ public class DataStore {
     }
 
     public void sortCitiesByPopulation(){
+        populationSortingSwitch = !populationSortingSwitch;
         List<City> sortedCities = this.cities;
 
-        sortedCities.sort(Comparator.comparing(City::getPopulation));
+        Collections.sort(sortedCities, new Comparator<City>() {
+            @Override
+            public int compare(City city1, City city2)
+            {
+                if(populationSortingSwitch){
+                    return  city1.getPopulation() - (city2.getPopulation());
+                }else{
+                    return  city2.getPopulation() - (city1.getPopulation());
+                }
+            }
+        });
 
         this.cities = sortedCities;
     }
-
 }

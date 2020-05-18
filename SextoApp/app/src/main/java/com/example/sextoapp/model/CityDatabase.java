@@ -107,4 +107,29 @@ public class CityDatabase extends SQLiteOpenHelper {
         db.close();
         return count;
     }
+
+    //ORDER BY
+    public List<City> retrieveCitiesFromDatabase(String orderBy){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(
+                DB_TABLE,
+                null, null, null, null, null, orderBy, COL_NAME
+        );
+        List<City> cities = new ArrayList<>();
+
+        if(cursor.moveToFirst()){
+            do{
+                City city = new City(
+                        cursor.getString(cursor.getColumnIndex(COL_NAME)),
+                        cursor.getInt(cursor.getColumnIndex(COL_POPULATION))
+                );
+                city.setId(cursor.getInt(cursor.getColumnIndex(COL_ID)));
+
+                cities.add(city);
+            }while (cursor.moveToNext());
+        }
+
+        db.close();
+        return cities;
+    }
 }
